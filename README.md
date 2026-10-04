@@ -26,11 +26,11 @@
             color: #ffffff;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Changed to flex-start so it scrolls from top to bottom */
             min-height: 100vh;
             margin: 0;
-            padding: 20px;
-            overflow: hidden;
+            padding: 40px 20px 80px 20px; /* Added 80px bottom padding for clean scrolling space */
+            overflow-y: auto; /* Fixed: Changes page parameters to allow scrolling down */
         }
 
         /* Seamless particle drifting animation loop */
@@ -39,19 +39,21 @@
             to { background-position: 550px 1100px, 390px 760px, 680px 570px; }
         }
 
-        /* Expanded Modern Glassmorphic Giveaway Card */
+        /* Fully Expanded Modern Glassmorphic Giveaway Card */
         .giveaway-card {
             background: rgba(15, 10, 20, 0.6);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 0, 60, 0.25);
-            padding: 55px 45px;
+            padding: 55px 40px;
             border-radius: 24px;
             box-shadow: 0 0 50px rgba(255, 0, 60, 0.2);
             text-align: center;
-            max-width: 560px; /* Precise 560px parameter layout */
+            max-width: 560px; /* Widened box parameters to 560px */
             width: 100%;
             z-index: 2;
+            margin-top: auto;
+            margin-bottom: auto;
             animation: cardFadeIn 0.8s ease-out;
         }
 
@@ -220,7 +222,6 @@
             cardContent.style.display = 'none';
             spinner.style.display = 'block';
 
-            // Wait exactly 3000 milliseconds (3 seconds) before revealing
             setTimeout(() => {
                 spinner.style.display = 'none';
                 prankSection.style.display = 'block';
@@ -231,7 +232,6 @@
             window.open(window.location, '_self').close();
             window.close();
             
-            // Fallback screen if browser prevents direct closing
             document.body.innerHTML = '<div style="color: #666; font-family: sans-serif; text-align: center; margin-top: 40vh; font-size: 1.2rem;">Portal Terminated. You can safely close this tab.</div>';
             document.body.style.background = '#000000';
         }
